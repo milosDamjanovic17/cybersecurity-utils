@@ -2,12 +2,19 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"strings"
+
+	// "moose.com/web-server-quick-audit/web-server-headers-quick-audit/internal/audit"
+	"moose.com/web-server-quick-audit/internal/audit"
 )
 
 func main() {
+	pathFlag := flag.String("path", "", "Custom path to web server configuration directory")
+	flag.Parse()
+
 	fmt.Println("=== Web Server Security Audit ===")
 	fmt.Println("Which web server are you using? Type 'n' for nginx, Type 'a' for Apache")
 
@@ -23,20 +30,12 @@ func main() {
 
 	switch server {
 	case "n":
-		auditNginx()
+		audit.AuditNginx(*pathFlag)
 		// Placeholder for NGINX audit logic
 	case "a":
-		auditApache()
+		audit.AuditApache(*pathFlag)
 		// Placeholder for Apache audit logic
 	default:
 		fmt.Println("Invalid selection. Please choose either 'nginx' or 'apache'.")
 	}
-}
-
-func auditNginx() {
-	fmt.Println("You have chosen NGINX")
-}
-
-func auditApache() {
-	fmt.Println("You have chosen Apache")
 }
