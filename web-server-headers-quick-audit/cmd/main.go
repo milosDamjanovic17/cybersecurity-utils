@@ -23,12 +23,20 @@ func main() {
 
 	switch server {
 	case "n":
-		fmt.Println("You selected NGINX.")
+		auditNginx()
 		// Placeholder for NGINX audit logic
 	case "a":
-		fmt.Println("You selected Apache.")
+		auditApache()
 		// Placeholder for Apache audit logic
 	default:
 		fmt.Println("Invalid selection. Please choose either 'nginx' or 'apache'.")
 	}
+}
+
+func auditNginx() {
+	fmt.Println("You have chosen NGINX")
+}
+
+func auditApache() {
+	fmt.Println("You have chosen Apache")
 }
