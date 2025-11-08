@@ -121,9 +121,9 @@ func auditFile(filePath string) {
 		if !found {
 			fmt.Printf("Missing directive: %s\n", directive)
 		} else if len(missingValues) > 0 {
-			fmt.Printf("Directive '%s' found but missing values: %v\n", directive, missingValues)
+			fmt.Printf("Directive '%s' found but missing values: %v\n\t recommended: %s\n", directive, missingValues, expectedValues)
 		} else {
-			fmt.Printf("%s OK\n", directive)
+			fmt.Printf("%s OK - values %s\n", directive, expectedValues)
 		}
 	}
 }
