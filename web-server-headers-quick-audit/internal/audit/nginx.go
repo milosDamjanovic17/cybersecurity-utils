@@ -12,7 +12,7 @@ const defaultNginxPath = "/etc/nginx/sites-enabled/"
 
 var nginxHeadersChecks = map[string][]string{
 	"ssl_protocols": {
-		"TLS1.2", "TLS1.3",
+		"TLSv1.2", "TLSv1.3",
 	},
 	"add_header Strict-Transport-Security": {
 		"max-age=31536000", "includeSubDomains", "preload",
