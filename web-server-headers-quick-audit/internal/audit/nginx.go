@@ -61,7 +61,7 @@ func AuditNginx(customPath string) {
 		return
 	}
 
-	files, err := filepath.Glob(filepath.Join(pathToCheck, "*.conf"))
+	files, err := filepath.Glob(filepath.Join(pathToCheck, "*"))
 	if err != nil {
 		fmt.Println("Error reading directory:", err)
 		return
@@ -71,7 +71,6 @@ func AuditNginx(customPath string) {
 		fmt.Println("No .conf files found in the specified directory.")
 		return
 	}
-
 
 	for _, file := range files {
 		fmt.Printf("\nAuditing file: %s\n", file)
@@ -87,7 +86,6 @@ func pathExists(path string) bool {
 	}
 	return info.IsDir()
 }
-
 
 func auditFile(filePath string) {
 	file, err := os.Open(filePath)
