@@ -6,13 +6,11 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	// "moose.com/web-server-quick-audit/web-server-headers-quick-audit/internal/audit"
 	"moose.com/web-server-quick-audit/internal/audit"
 )
 
 func main() {
-	pathFlag := flag.String("path", "", "Custom path to web server configuration directory")
+	pathFlag := flag.String("path", "", "Custom path to web server configuration directory") // --path=/my/custom/path/to/web-server
 	flag.Parse()
 
 	fmt.Println("=== Web Server Security Audit ===")
