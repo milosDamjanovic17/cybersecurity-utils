@@ -68,7 +68,7 @@ func AuditNginx(customPath string) {
 	}
 
 	if len(files) == 0 {
-		fmt.Println("No .conf files found in the specified directory.")
+		fmt.Println("No NGINX config files found in the specified directory.")
 		return
 	}
 
@@ -79,6 +79,7 @@ func AuditNginx(customPath string) {
 	// TODO: continue with NGINX audit logic here
 }
 
+// outsourced this for now in nginx, both apache audit and nginx audit will use this one
 func pathExists(path string) bool {
 	info, err := os.Stat(path)
 	if os.IsNotExist(err) {
