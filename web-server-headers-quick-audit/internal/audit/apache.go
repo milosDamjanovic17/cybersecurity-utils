@@ -81,7 +81,7 @@ func AuditApache(customPath string) {
 		fmt.Printf("\nAuditing file: %s\n", file)
 		auditApacheFile(file)
 	}
-	// TODO: continue with Apache audit logic here
+	// TODO: continue with Apache audit logic here /////
 }
 
 
