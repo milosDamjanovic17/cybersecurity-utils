@@ -34,6 +34,12 @@ var nginxHeadersChecks = map[string][]string{
 	},
 }
 
+var nginxRiskyHeaders = map[string][]string {
+		"add_header X-XSS-Protection": {
+		"1; mode=block",
+	},
+}
+
 func AuditNginx(customPath string) {
 
 	pathToCheck := defaultNginxPath
@@ -106,11 +112,20 @@ func auditFile(filePath string) {
 		content = append(content, scanner.Text())
 	}
 
+	// check for risky headers
+
 	for directive, expectedValues := range nginxHeadersChecks {
 		found := false
 		missingValues := []string{}
 
+		// check for unsupported risky headers
+		_, ok := nginxRiskyHeaders[directive]
+		if ok {
+			fmt.Printf("Risky Header found ----- %v ----- Use it at your own risk!\n", directive)
+		}
+
 		for _, line := range content {
+			// fmt.Println("Value of: ", line)
 			if strings.Contains(line, directive) {
 				found = true
 				for _, val := range expectedValues {
