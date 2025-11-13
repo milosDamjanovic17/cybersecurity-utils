@@ -29,6 +29,9 @@ var nginxHeadersChecks = map[string][]string{
 	"add_header X-Frame-Options": {
 		"SAMEORIGIN",
 	},
+	"add_header X-XSS-Protection": {
+		"1; mode=block",
+	},
 }
 
 func AuditNginx(customPath string) {
