@@ -125,7 +125,6 @@ func auditFile(filePath string) {
 		}
 
 		for _, line := range content {
-			// fmt.Println("Value of: ", line)
 			if strings.Contains(line, directive) {
 				found = true
 				for _, val := range expectedValues {
